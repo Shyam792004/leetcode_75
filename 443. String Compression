@@ -1,0 +1,29 @@
+class Solution {
+    public int compress(char[] chars) {
+      char ptr=chars[0];
+      String code="";
+      int run=0;
+
+      for(char c:chars)
+      {
+        if(c==ptr)
+        {
+            run++;
+        }
+        else
+        {
+            code=code+ptr+(run>1?run:"");
+            ptr=c;
+            run=1;
+        }
+      }
+      //have to append the last element also
+    code =code+ptr+(run>1?run:"");
+      for(int i=0;i<code.length();i++)
+      {
+        chars[i]=code.charAt(i);
+      }
+      return code.length();
+
+    }
+}
